@@ -1,0 +1,17 @@
+{
+  "name": "recite-register",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "parcel index.html"
+  },
+  "author": "Xuyang1638",
+  "license": "ISC",
+  "dependencies": {
+    "mdui": "^0.4.2"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.3"
+  }
+}

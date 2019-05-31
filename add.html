@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>背诵登记 - Powered by Xuyang</title>
+    <link rel="stylesheet" href="./node_modules/mdui/dist/css/mdui.min.css">
+    <link rel="stylesheet" href="./src/main.css">
+</head>
+<body>
+<div class="mdui-container">
+    <div class="flex-center">
+        <select id="chaper-selector" class="mdui-select" mdui-select>
+            <option value="6.1">第六章第一节</option>
+            <option value="6.2">第六章第二节</option>
+            <option value="7.1">第七章第一节 日本</option>
+            <option value="7.2">第七章第二节 东南亚</option>
+            <option value="7.3">第七章第三节 印度</option>
+            <option value="7.4">第七章第四节 俄罗斯</option>
+            <option value="8.1">第八章第一节 中东</option>
+            <option value="8.2">第八章第二节 欧洲西部</option>
+            <option value="8.3">第八章第三节 撒哈拉以南的非洲</option>
+            <option value="8.4">第八章第四节 澳大利亚</option>
+            <option value="9.1">第九章第一节 美国</option>
+            <option value="9.2">第九章第二节 巴西</option>
+        </select>
+    </div>
+</div>
+
+<script src="./node_modules/mdui/dist/js/mdui.min.js"></script>
+<script>
+    // 获取多选框内容
+    let selector = document.querySelector("#chaper-selector")
+    let selectedIndex = selector.selectedIndex
+    let selectedValue = selector.options[selectedIndex].value
+    let queryUrl = `server/add?chaper_id=${}&student_id=${}&adder_id=${}`
+</script>
+</body>
+</html>

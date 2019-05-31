@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>背诵登记 - Powered by Xuyang</title>
+    <link rel="stylesheet" href="./node_modules/mdui/dist/css/mdui.min.css">
+    <link rel="stylesheet" href="./src/main.css">
+</head>
+<body>
+<div class="mdui-container">
+    <div class="flex-center">
+        <h1>Recite Register Log in</h1>
+    </div>
+    <div class="flex-center">
+        <input class="inputEl inputEl-size-large" type="text" placeholder="在这里输入你的用户名" id="username">
+    </div>
+    <div class="flex-center">
+        <input class="inputEl inputEl-size-large" type="password" placeholder="在这里输入你的密码" id="password">
+    </div>
+    <div class="flex-center">
+        <button class="mdui-btn mdui-color-pink mdui-ripple mdui-btn-raised" id="loginBtn" onclick="login();">登录</button>
+    </div>
+</div>
+
+<script src="./node_modules/mdui/dist/js/mdui.min.js"></script>
+<script>
+    function login() {
+        // 暂时先用着吧
+        let user_names = ['zhonghui','cheleming','zouyuxin','zhuchengliang']
+        let user_passwords = ['zhonghui','cheleming','zouyuxin','zhuchengliang']
+
+        let entered_user_name = document.querySelector('#username').value
+        let entered_user_password = document.querySelector('#password').value
+        for (let i = 0; i < user_names.length; i++) {
+            if (user_names[i] == entered_user_name) {
+                if (user_passwords[i] == entered_user_password) {
+                    alert('Welcome!')
+                    // flag is true
+                    window.location.href =  'add.html?login=true'
+                } else {
+                    alert('Wrong Password!')
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
