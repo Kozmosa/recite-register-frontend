@@ -9,6 +9,7 @@
   "author": "Xuyang1638",
   "license": "ISC",
   "dependencies": {
+    "jquery": "^3.4.1",
     "mdui": "^0.4.2"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
 node_modules/
-.git
-.cache
+.git/
+.cache/
+.idea/
 package-lock.json

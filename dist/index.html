@@ -7,7 +7,12 @@
 <body>
 <div class="mdui-container">
     <div class="flex-center">
-        <input class="inputEl inputEl-size-large" type="text" placeholder="在这里输入你的用户名" id="username"> <br>
+        <h1>Recite Register Log in</h1>
+    </div>
+    <div class="flex-center">
+        <input class="inputEl inputEl-size-large" type="text" placeholder="在这里输入你的用户名" id="username">
+    </div>
+    <div class="flex-center">
         <input class="inputEl inputEl-size-large" type="password" placeholder="在这里输入你的密码" id="password">
     </div>
     <div class="flex-center">
@@ -16,9 +21,33 @@
 </div>
 
 <script src="/mdui.min.a104fa47.js"></script>
-<script>// 获取多选框内容
-var selector = document.querySelector("#chaper-selector");
-var selectedIndex = selector.selectedIndex;
-var selectedValue = selector.options[selectedIndex].value; // let queryUrl = `server/add?chaper_id=${}&student_id=${}&adder_id=${}`</script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>'use strict';
+
+function login() {
+  // 暂时先用着吧
+  var user_names = ['xuyang', 'zhonghui', 'cheleming', 'zouyuxin', 'zhuchengliang'];
+  var user_passwords = ['asd369', 'zhonghui', 'cheleming', 'zouyuxin', 'zhuchengliang'];
+  var entered_user_name = document.querySelector('#username').value;
+  var entered_user_password = document.querySelector('#password').value;
+
+  for (var i = 0; i < user_names.length; i++) {
+    if (user_names[i] == entered_user_name) {
+      if (user_passwords[i] == entered_user_password) {
+        alert('Welcome!'); // flag is true
+
+        window.location.href = 'add.html?login=true';
+      } else {
+        alert('Wrong Password!');
+      }
+    }
+  }
+}
+
+$(document).keydown(function (event) {
+  if (event.keyCode == 13) {
+    alert('你按下了Enter');
+  }
+});</script>
 </body>
 </html>

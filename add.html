@@ -3,10 +3,39 @@
     <title>背诵登记 - Powered by Xuyang</title>
     <link rel="stylesheet" href="./node_modules/mdui/dist/css/mdui.min.css">
     <link rel="stylesheet" href="./src/main.css">
+    <script>
+        function add() {
+            // 获取登录用户
+            let user = GetParam('loginedUser')
+
+            // 获取多选框内容
+            let selector = document.querySelector("#chaper-selector")
+            let selectedIndex = selector.selectedIndex
+            let selectedValue = selector.options[selectedIndex].value
+
+            // 记录日志
+            if (RecordLog(`Time:${Date()}, Activity: Add a recite record, User:${user}`) == true) {
+                // 日志记录成功
+                // 开始登录操作
+                let queryUrl = `server/add?chaper_id=${selectedValue}&student_id=${}&adder_id=${}`
+            } else {
+                console.log('Log record failed!')
+                mdui.alert('服务器内部错误，请到网络畅通的环境下操作！')
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="mdui-container">
-    <div class="flex-center">
+    <div class="mdui-row flex-center">
+        <h1>
+            Recite Registry Add Record
+        </h1>
+    </div>
+    <div class="mdui-row flex-center">
+        <input id="student_id" placeholder="请在此处输入要操作的同学的考号" type="number"
+    </div>
+    <div class="mdui-row flex-center">
         <select id="chaper-selector" class="mdui-select" mdui-select>
             <option value="6.1">第六章第一节</option>
             <option value="6.2">第六章第二节</option>
@@ -21,16 +50,16 @@
             <option value="9.1">第九章第一节 美国</option>
             <option value="9.2">第九章第二节 巴西</option>
         </select>
+
+        <br>
+
+        <button id="submitBtn" class="mdui-btn mdui-color-pink mdui-ripple mdui-raised" onclick="add()">
+            登记
+        </button>
     </div>
 </div>
 
 <script src="./node_modules/mdui/dist/js/mdui.min.js"></script>
-<script>
-    // 获取多选框内容
-    let selector = document.querySelector("#chaper-selector")
-    let selectedIndex = selector.selectedIndex
-    let selectedValue = selector.options[selectedIndex].value
-    let queryUrl = `server/add?chaper_id=${}&student_id=${}&adder_id=${}`
-</script>
+<script src="./src/main.js"></script>
 </body>
 </html>
