@@ -3,27 +3,7 @@
     <title>背诵登记 - Powered by Xuyang</title>
     <link rel="stylesheet" href="./node_modules/mdui/dist/css/mdui.min.css">
     <link rel="stylesheet" href="./src/main.css">
-    <script>
-        function add() {
-            // 获取登录用户
-            let user = GetParam('loginedUser')
 
-            // 获取多选框内容
-            let selector = document.querySelector("#chaper-selector")
-            let selectedIndex = selector.selectedIndex
-            let selectedValue = selector.options[selectedIndex].value
-
-            // 记录日志
-            if (RecordLog(`Time:${Date()}, Activity: Add a recite record, User:${user}`) == true) {
-                // 日志记录成功
-                // 开始登录操作
-                let queryUrl = `server/add?chaper_id=${selectedValue}&student_id=${}&adder_id=${}`
-            } else {
-                console.log('Log record failed!')
-                mdui.alert('服务器内部错误，请到网络畅通的环境下操作！')
-            }
-        }
-    </script>
 </head>
 <body>
 <div class="mdui-container">
@@ -33,7 +13,7 @@
         </h1>
     </div>
     <div class="mdui-row flex-center">
-        <input id="student_id" placeholder="请在此处输入要操作的同学的考号" type="number"
+        <input id="student_id" class="student_id" placeholder="请在此处输入要操作的同学的考号" type="number">
     </div>
     <div class="mdui-row flex-center">
         <select id="chaper-selector" class="mdui-select" mdui-select>
@@ -58,7 +38,37 @@
         </button>
     </div>
 </div>
+<script>
+    function add() {
+        // 获取登录用户
+        let user = GetParam('loginedUser')
 
+        // 获取多选框内容
+        let selector = document.querySelector("#chaper-selector")
+        let selectedIndex = selector.selectedIndex
+        let selectedValue = selector.options[selectedIndex].value
+
+        // 获取被操作人考号
+        let student_id = document.querySelector("#student_id").value
+
+        /*
+        // 记录日志
+        if (RecordLog(`Time:${Date()}, Activity: Add a recite record, User:${user}`) == true) {
+            // 日志记录成功
+            */
+
+
+        // 开始登记操作
+        let queryUrl = `http://${window.location.hostname}:8080/record/tick?chapter_id=${selectedValue}&student_id=${student_id}`
+        let response = HTTP_GET(queryUrl)
+        console.log(response)
+        if(response.code == 200) {
+            alert("登记成功！")
+        } else {
+            alert("登记失败，建议您到网络畅通的环境下再试一次☆")
+        }
+    }
+</script>
 <script src="./node_modules/mdui/dist/js/mdui.min.js"></script>
 <script src="./src/main.js"></script>
 </body>

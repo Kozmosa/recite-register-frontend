@@ -25,8 +25,9 @@ postData('http://example.com/answer', {answer: 42})
 
 function HTTP_GET(url) {
     // Default options are marked with *
-    return fetch(url, {
-        mode: 'no-cors'
+    return fetch(url).then((response) => {
+        response.json()
+        return response.json()
     }).then((response) => {
         return response
     })

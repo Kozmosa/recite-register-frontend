@@ -3,6 +3,7 @@
     <title>背诵登记 - Powered by Xuyang</title>
     <link rel="stylesheet" href="/mdui.min.3f302981.css">
     <link rel="stylesheet" href="/main.9a83caef.css">
+    <script src="/main.1e43358e.js"></script>
 <script src="/mdui.min.3f302981.js"></script><script src="/main.9a83caef.js"></script></head>
 <body>
 <div class="mdui-container">
@@ -36,7 +37,9 @@ function login() {
       if (user_passwords[i] == entered_user_password) {
         alert('Welcome!'); // flag is true
 
-        window.location.href = 'add.html?login=true';
+        var DateObj = new Date(); // RecordLog(`Time:${DateObj()}, Activity:Login, User:${entered_user_name}`)
+
+        window.location.href = 'add.html?login=true&loginedUser=' + entered_user_name;
       } else {
         alert('Wrong Password!');
       }
@@ -46,8 +49,9 @@ function login() {
 
 $(document).keydown(function (event) {
   if (event.keyCode == 13) {
-    alert('你按下了Enter');
+    login();
   }
-});</script>
+});
+alert("手机端客户请放大使用！", "提示");</script>
 </body>
 </html>
