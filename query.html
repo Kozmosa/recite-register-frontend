@@ -1,0 +1,90 @@
+<!-- 查询页面 -->
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>背诵登记 - Powered by Xuyang</title>
+    <link rel="stylesheet" href="./node_modules/mdui/dist/css/mdui.min.css">
+    <link rel="stylesheet" href="./src/main.css">
+    <script src="./node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="mdui-container">
+        <div class="mdui-row flex-center">
+            <h1>
+                Recite Registry Query Record
+            </h1>
+        </div>
+        <div class="mdui-row flex-center">
+            <input id="student_id" class="student_id" placeholder="请在此处输入要操作的同学的考号" type="number">
+        </div>
+        <div class="mdui-row flex-center">
+            <select id="chaper-selector" class="mdui-select" mdui-select>
+                <option value="6.1">第六章第一节</option>
+                <option value="6.2">第六章第二节</option>
+                <option value="7.1">第七章第一节 日本</option>
+                <option value="7.2">第七章第二节 东南亚</option>
+                <option value="7.3">第七章第三节 印度</option>
+                <option value="7.4">第七章第四节 俄罗斯</option>
+                <option value="8.1">第八章第一节 中东</option>
+                <option value="8.2">第八章第二节 欧洲西部</option>
+                <option value="8.3">第八章第三节 撒哈拉以南的非洲</option>
+                <option value="8.4">第八章第四节 澳大利亚</option>
+                <option value="9.1">第九章第一节 美国</option>
+                <option value="9.2">第九章第二节 巴西</option>
+            </select>
+
+            <br>
+
+            <button id="submitBtn" class="mdui-btn mdui-color-pink mdui-ripple mdui-raised" onclick="query()">
+                查询
+            </button>
+        </div>
+    </div>
+    <script>
+        function query() {
+            // 获取登录用户
+            let user = GetParam('loginedUser')
+
+            // 获取多选框内容
+            let selector = document.querySelector("#chaper-selector")
+            let selectedIndex = selector.selectedIndex
+            let selectedValue = selector.options[selectedIndex].value
+
+            // 获取查询章节名称
+            let queryChapterName = selector.options[selectedIndex].innerText
+
+            // 获取被操作人考号
+            let student_id = document.querySelector("#student_id").value
+
+            /*
+            // 记录日志
+            if (RecordLog(`Time:${Date()}, Activity: Add a recite record, User:${user}`) == true) {
+                // 日志记录成功
+                */
+
+
+            // 开始查询操作
+            let queryUrl = `http://${window.location.hostname}:8080/record/query?chapter_id=${selectedValue}&student_id=${student_id}`
+            let response = HTTP_GET($, queryUrl, function (response) {
+              console.log(response)
+              if(response.code == 200) {
+                  alert("查询成功！")
+                  let is_recite = response.is_recite
+                  if (is_recite == true) {
+                    let msg = "ID为" + student_id + "的同学，" + queryChapterName +  "已背！"
+                    alert(msg)
+                  } else {
+                    let msg = "ID为" + student_id + "的同学，" + queryChapterName +  "还未背！请及时督促！"
+                    alert(msg)
+                  }
+              } else {
+                  alert("登记失败，建议您到网络畅通的环境下再试一次☆")
+              }
+            })
+        }
+    </script>
+    <script src="./src/main.js" charset="utf-8"></script>
+    <script src="./node_modules/mdui/dist/js/mdui.min.js" charset="utf-8"></script>
+  </body>
+</html>

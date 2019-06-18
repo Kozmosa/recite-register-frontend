@@ -9,6 +9,7 @@
   "author": "Xuyang1638",
   "license": "ISC",
   "dependencies": {
+    "fluent-fetcher": "^0.3.3",
     "jquery": "^3.4.1",
     "mdui": "^0.4.2"
   },

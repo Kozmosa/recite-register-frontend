@@ -23,13 +23,10 @@ postData('http://example.com/answer', {answer: 42})
     .catch(error => console.error(error))
 */
 
-function HTTP_GET(url) {
+function HTTP_GET($, url, next) {
     // Default options are marked with *
-    return fetch(url).then((response) => {
-        response.json()
-        return response.json()
-    }).then((response) => {
-        return response
+    $.getJSON(url, function(data) {
+      next(data)
     })
 }
 
