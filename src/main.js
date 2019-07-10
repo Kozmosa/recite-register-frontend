@@ -32,12 +32,18 @@ function HTTP_GET($, url, next) {
 
 // Logs Module
 function RecordLog(logString) {
-    let url = '/log/add?logString=' + logString
-    HTTP_GET(url)
+    let url = '/log/add?content=' + logString
+    HTTP_GET(window.$, url, function(data) {
+        if (data.code = 200) {
+            return true
+        } else {
+            return false
+        }
+    })
 }
 
 function GetGlobalVariables() {
 	return {
-		"backendDomain": "120.55.167.135"
+		"backendDomain": "//120.55.167.135:8080"
 	}
 }

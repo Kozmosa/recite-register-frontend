@@ -1,5 +1,7 @@
+<!DOCTYPE HTML>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <title>背诵登记 - Powered by Xuyang</title>
     <link rel="stylesheet" href="./node_modules/mdui/dist/css/mdui.min.css">
     <link rel="stylesheet" href="./src/main.css">
@@ -33,25 +35,21 @@
 <script>
     'use strict';
     function login() {
-        // 暂时先用着吧
-        let user_names = ['xuyang', 'zhonghui','cheleming','zouyuxin','zhuchengliang']
-        let user_passwords = ['asd369', 'zhonghui','cheleming','zouyuxin','zhuchengliang']
+        // 获取全局常量池
+        var _global = GetGlobalVariables()
+        var encryptedUsername = self.btoa(document.querySelector('#username').value)
+        var encryptedPassword = self.btoa(document.querySelector('#password').value)
 
-        let entered_user_name = document.querySelector('#username').value
-        let entered_user_password = document.querySelector('#password').value
-        for (let i = 0; i < user_names.length; i++) {
-            if (user_names[i] == entered_user_name) {
-                if (user_passwords[i] == entered_user_password) {
-                    alert('Welcome!')
-                    // flag is true
-                    let DateObj = new Date()
-                    // RecordLog(`Time:${DateObj()}, Activity:Login, User:${entered_user_name}`)
-                    window.location.href =  'functions-navi.html?login=true&loginedUser=' + entered_user_name
-                } else {
-                    alert('Wrong Password!')
-                }
+        // 构造请求字符串
+        var url = _global.backendDomain + '/user/login?user_name=' + encrypted_user_name + '&user_password=' + encrypted_user_password
+        var data = HTTP_GET($, url, function(data) {
+            if (data.user_flag == true) {
+                var newUrl = '/functions-navi.html?loginedUser=' + encryptedUsername
+                self.location.href = newUrl
+            } else {
+                alert('您输入的用户名或密码不正确！')
             }
-        }
+        })
     }
 
     $(document).keydown(function(event){
