@@ -5,8 +5,15 @@
     <link rel="stylesheet" href="./src/main.css">
     <script src="./src/main.js"></script>
 </head>
-<body>
-<div class="mdui-container">
+<body class="mdui-theme-primary-pink">
+<div class="mdui-toolbar mdui-color-theme">
+	<a href="functions-navi.html" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+	<span class="mdui-typo-title">Log in</span>
+	<div class="mdui-toolbar-spacer"></div>
+	<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
+	<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+</div>
+<div class="mdui-container ">
     <div class="flex-center">
         <h1>Recite Register Log in</h1>
     </div>
@@ -39,7 +46,7 @@
                     // flag is true
                     let DateObj = new Date()
                     // RecordLog(`Time:${DateObj()}, Activity:Login, User:${entered_user_name}`)
-                    window.location.href =  'add.html?login=true&loginedUser=' + entered_user_name
+                    window.location.href =  'functions-navi.html?login=true&loginedUser=' + entered_user_name
                 } else {
                     alert('Wrong Password!')
                 }

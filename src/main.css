@@ -25,6 +25,10 @@
 }
 
 .student_id {
-    width: 28.2%;
+    width: 80%;
     height: 35px;
+}
+
+.chapter-selector {
+	width: 50%;
 }

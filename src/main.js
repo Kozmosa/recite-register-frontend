@@ -35,3 +35,9 @@ function RecordLog(logString) {
     let url = '/log/add?logString=' + logString
     HTTP_GET(url)
 }
+
+function GetGlobalVariables() {
+	return {
+		"backendDomain": "120.55.167.135"
+	}
+}

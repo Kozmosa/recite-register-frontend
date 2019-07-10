@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>背诵登记 - Powered by Xuyang</title>
+    <link rel="stylesheet" href="./node_modules/mdui/dist/css/mdui.min.css">
+    <link rel="stylesheet" href="./src/main.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	
+	<script>
+	  function open(function_name){
+	    let user = GetParam('loginedUser')
+	    let function_names = {
+	      "add": `add.html?loginedUser=${user}`,
+	      "query": `query.html?loginedUser=${user}`,
+	      "delete": `delete.html?loginedUser=${user}`
+	    }
+	    window.location.href = function_names[function_name]
+	  }
+	</script>
+	<script src="./node_modules/mdui/dist/js/mdui.min.js"></script>
+	<script src="./src/main.js"></script>
+</head>
+<body class="mdui-theme-primary-pink">
+<div class="mdui-toolbar mdui-color-theme">
+	<a href="functions-navi.html" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+	<span class="mdui-typo-title">Navigate</span>
+	<div class="mdui-toolbar-spacer"></div>
+	<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
+	<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+</div>
+<div class="mdui-container">
+    <div class="mdui-row flex-center">
+      <h1>请选择您要执行的功能</h1>
+    </div>
+    <div class="mdui-row flex-center">
+		<a href="javascript:open('add');" class="mdui-btn mdui-color-theme mdui-ripple mdui-raised">添加新记录</a>
+		
+    </div><br>
+	<div class="mdui-row flex-center">
+	    <a href="javascript:open('query');" class="mdui-btn mdui-color-theme mdui-ripple mdui-raised">查询记录</a>
+	</div><br>
+	<div class="mdui-row flex-center">
+	    <a href="javascript:open('delete');" class="mdui-btn mdui-color-theme mdui-ripple mdui-raised">删除记录</a>
+	</div><br>
+</div>
+</body>
+</html>

@@ -8,18 +8,20 @@
     <link rel="stylesheet" href="./src/main.css">
     <script src="./node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
   </head>
-  <body>
-    <div class="mdui-container">
-        <div class="mdui-row flex-center">
-            <h1>
-                Recite Registry Query Record
-            </h1>
-        </div>
+  <body class="mdui-theme-primary-pink">
+  <div class="mdui-toolbar mdui-color-theme">
+	<a href="functions-navi.html" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+	<span class="mdui-typo-title">Recite Registry Query Record</span>
+	<div class="mdui-toolbar-spacer"></div>
+	<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
+  	<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+  </div>
+    <div class="mdui-container mdui-theme-primary-pink">
         <div class="mdui-row flex-center">
             <input id="student_id" class="student_id" placeholder="请在此处输入要操作的同学的考号" type="number">
         </div>
         <div class="mdui-row flex-center">
-            <select id="chaper-selector" class="mdui-select" mdui-select>
+            <select id="chaper-selector" class="mdui-select chapter-selector" mdui-select>
                 <option value="6.1">第六章第一节</option>
                 <option value="6.2">第六章第二节</option>
                 <option value="7.1">第七章第一节 日本</option>
@@ -43,6 +45,8 @@
     </div>
     <script>
         function query() {
+			// 获取全局变量池
+			let _global = GetGlobalVariables()
             // 获取登录用户
             let user = GetParam('loginedUser')
 
@@ -65,7 +69,7 @@
 
 
             // 开始查询操作
-            let queryUrl = `http://${window.location.hostname}:8080/record/query?chapter_id=${selectedValue}&student_id=${student_id}`
+            let queryUrl = `http://${_global.backendDomain}:8080/record/query?chapter_id=${selectedValue}&student_id=${student_id}`
             let response = HTTP_GET($, queryUrl, function (response) {
               console.log(response)
               if(response.code == 200) {

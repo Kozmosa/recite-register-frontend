@@ -5,13 +5,15 @@
     <link rel="stylesheet" href="./src/main.css">
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<body>
-<div class="mdui-container">
-    <div class="mdui-row flex-center">
-        <h1>
-            Recite Registry Add Record
-        </h1>
-    </div>
+<body class="mdui-theme-primary-pink">
+<div class="mdui-toolbar mdui-color-theme">
+	<a href="functions-navi.html" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+	<span class="mdui-typo-title">Recite Registry Add Record</span>
+	<div class="mdui-toolbar-spacer"></div>
+	<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
+	<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+</div>
+<div class="mdui-container mdui-theme-primary-pink">
     <div class="mdui-row flex-center">
         <input id="student_id" class="student_id" placeholder="请在此处输入要操作的同学的考号" type="number">
     </div>
@@ -40,6 +42,9 @@
 </div>
 <script>
     function add() {
+		// 获取全局变量池
+		let _global = GetGlobalVariables()
+		console.log(_global.backendDomain)
         // 获取登录用户
         let user = GetParam('loginedUser')
 
@@ -59,7 +64,7 @@
 
 
         // 开始登记操作
-        let queryUrl = `http://${window.location.hostname}:8080/record/tick?chapter_id=${selectedValue}&student_id=${student_id}`
+        let queryUrl = `http://${_global.backendDomain}:8080/record/tick?chapter_id=${selectedValue}&student_id=${student_id}`
         let response = HTTP_GET($, queryUrl, function (response) {
           console.log(response)
           if(response.code == 200) {
