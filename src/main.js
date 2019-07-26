@@ -17,15 +17,9 @@ function GetParam(paramName) {
 }
 
 // Network Interface
-/*
-postData('http://example.com/answer', {answer: 42})
-    .then(data => console.log(data)) // JSON from `response.json()` call
-    .catch(error => console.error(error))
-*/
-
 function HTTP_GET($, url, next) {
     // Default options are marked with *
-    $.getJSON(url, function(data) {
+    $.getJSON(url, function(data) { // jQuery API
       next(data)
     })
 }
