@@ -12,8 +12,5 @@
     "fluent-fetcher": "^0.3.3",
     "jquery": "^3.4.1",
     "mdui": "^0.4.2"
-  },
-  "devDependencies": {
-    "parcel": "^1.12.3"
   }
 }
