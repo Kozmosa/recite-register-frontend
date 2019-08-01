@@ -37,11 +37,13 @@
     function login() {
         // 获取全局常量池
         var _global = GetGlobalVariables()
-        var encryptedUsername = self.btoa(document.querySelector('#username').value)
-        var encryptedPassword = self.btoa(document.querySelector('#password').value)
+        // var encryptedUsername = self.btoa(document.querySelector('#username').value)
+        // var encryptedPassword = self.btoa(document.querySelector('#password').value)
+        var username = document.querySelector('#username').value
+        var password = document.querySelector('#password').value
 
         // 构造请求字符串
-        var url = _global.backendDomain + '/user/login?user_name=' + encryptedUsername + '&user_password=' + encryptedPassword
+        var url = _global.backendDomain + '/user/login?user_name=' + username + '&user_password=' + password
         var data = HTTP_GET($, url, function(data) {
             console.log(url)
             console.log(data)
