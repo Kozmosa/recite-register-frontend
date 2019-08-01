@@ -11,7 +11,12 @@
   "dependencies": {
     "fluent-fetcher": "^0.3.3",
     "jquery": "^3.4.1",
+<<<<<<< HEAD
     "mdui": "^0.4.3"
   },
   "devDependencies": {}
+=======
+    "mdui": "^0.4.2"
+  }
+>>>>>>> 456313df952883e7b0d1dfe6d20f47384ce81b19
 }
