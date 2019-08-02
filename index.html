@@ -9,20 +9,20 @@
 </head>
 <body class="mdui-theme-primary-pink">
 <div class="mdui-toolbar mdui-color-theme">
-	<a href="functions-navi.html" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+	<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
 	<span class="mdui-typo-title">Log in</span>
 	<div class="mdui-toolbar-spacer"></div>
 	<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
 	<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
 </div>
 <div class="mdui-container ">
-    <div class="flex-center">
+    <div class="flex-center" id="title">
         <h1>Recite Register Log in</h1>
     </div>
-    <div class="flex-center">
+    <div class="flex-center" id="usernameWrapper">
         <input class="inputEl inputEl-size-large" type="text" placeholder="在这里输入你的用户名" id="username">
     </div>
-    <div class="flex-center">
+    <div class="flex-center" id="passwordWrapper">
         <input class="inputEl inputEl-size-large" type="password" placeholder="在这里输入你的密码" id="password">
     </div>
     <div class="flex-center">
@@ -37,12 +37,16 @@
     function login() {
         // 获取全局常量池
         var _global = GetGlobalVariables()
-        var encryptedUsername = self.btoa(document.querySelector('#username').value)
-        var encryptedPassword = self.btoa(document.querySelector('#password').value)
+        // var encryptedUsername = self.btoa(document.querySelector('#username').value)
+        // var encryptedPassword = self.btoa(document.querySelector('#password').value)
+        var username = document.querySelector('#username').value
+        var password = document.querySelector('#password').value
 
         // 构造请求字符串
-        var url = _global.backendDomain + '/user/login?user_name=' + encrypted_user_name + '&user_password=' + encrypted_user_password
+        var url = _global.backendDomain + '/user/login?user_name=' + username + '&user_password=' + password
         var data = HTTP_GET($, url, function(data) {
+            console.log(url)
+            console.log(data)
             if (data.user_flag == true) {
                 var newUrl = '/functions-navi.html?loginedUser=' + encryptedUsername
                 self.location.href = newUrl

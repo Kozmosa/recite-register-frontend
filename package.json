@@ -13,9 +13,12 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.4.1",
-    "mdui": "^0.4.2"
+<<<<<<< HEAD
+    "mdui": "^0.4.3"
   },
-  "devDependencies": {
-    "parcel": "^1.12.3"
+  "devDependencies": {}
+=======
+    "mdui": "^0.4.2"
   }
+>>>>>>> 456313df952883e7b0d1dfe6d20f47384ce81b19
 }
