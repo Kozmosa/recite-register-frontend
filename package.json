@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "test": "parcel index.html"
+    "run": "parcel index.html",
+    "build": "bash scripts/build.sh",
+    "build-production": "bash scripts/build-production.sh",
+    "dev": "bash scripts/dev.sh"
   },
   "author": "Xuyang1638",
   "license": "ISC",
   "dependencies": {
-    "fluent-fetcher": "^0.3.3",
     "jquery": "^3.4.1",
     "mdui": "^0.4.2"
   },

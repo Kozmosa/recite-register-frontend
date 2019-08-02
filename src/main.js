@@ -30,6 +30,18 @@ function HTTP_GET($, url, next) {
     })
 }
 
+// Beta Version HTTP_GET function
+function beta_HTTP_GET(url, next) {
+  /*
+  Next: a function, accept a argument -> json response
+  */
+  fetch(url).then((response) => {
+    response.json()
+  }).then((data) => {
+    next(data)
+  })
+}
+
 // Logs Module
 function RecordLog(logString) {
     let url = '/log/add?content=' + logString
